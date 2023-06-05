@@ -1,0 +1,32 @@
+<div class="container text-center">
+    <h1 class="text text-warning">Online Movie Store</h1>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="/movie/list/asc">Sort title ascending</a>
+            <a class="btn btn-secondary" href="/movie/list/desc">Sort title descending</a>
+        </div>
+        <div class="col md-4">
+            <form action="/movie/search" method="POST">
+                <input type="search" name="title" placeholder="Search by title" required>
+            </form>
+        </div>
+    </div>
+
+    <div class="card-group">
+        <div class="row">
+            {{#each movies }}
+            <div class="card col-md-3">
+                <img src="{{poster}}" width="150" height="150" alt="" class="card-img-top mt-3">
+                <div class="card-body">
+                    <h4 class="card-title text-success">{{ title }}</h4>
+                    <p class="fw-bold card-text text-primary">{{ year }}</p>
+                    <form action="/movie/rent" method="post">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="submit" class="btn btn-danger" value="Rent" />
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
